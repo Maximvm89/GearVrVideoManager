@@ -11,8 +11,12 @@ public class AvviaServer : MonoBehaviour {
 	public bool client2 = false;
 	public bool broadcast = false;
 
-	// Use this for initialization
-	void Start () {
+    Text txt;
+
+    public GameObject status1;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -24,14 +28,18 @@ public class AvviaServer : MonoBehaviour {
 	public void StartServer() {
 		NetworkServer.Listen(4444);
 		Debug.Log ("Server avviato");
-		NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
+        txt = status1.GetComponent<Text>();
+        txt.text = "Server avviato";
+        NetworkServer.RegisterHandler (MsgType.Connect, OnClientConnected);
 	}
 
 	void OnClientConnected (NetworkMessage msg)
 	{
 		Debug.Log ("Client Connected");
 		Debug.Log (msg.conn.connectionId);
-	}
+        txt = status1.GetComponent<Text>();
+        txt.text = "Client Connected";
+    }
 
 	public class MyMsgType {
 		public static short Valore = MsgType.Highest + 1;
@@ -48,14 +56,16 @@ public class AvviaServer : MonoBehaviour {
 		CommandMessage msg = new CommandMessage();
 		msg.comando = com; 
 
-		if ((client1) || (broadcast)) {
-			msg.IdConnessione = 1;
+	//	if ((client1) || (broadcast)) {
+	//		msg.IdConnessione = 1;
 			NetworkServer.SendToClient (1, MyMsgType.Valore, msg);
-		}
+            txt = status1.GetComponent<Text>();
+            txt.text = com;
+    /*    }
 		if ((client2) || (broadcast)) {
 			msg.IdConnessione = 2;
 			NetworkServer.SendToClient (2, MyMsgType.Valore, msg);
-		}
+		}*/
 	}
 		
 	public void checkboxes(int which) {
