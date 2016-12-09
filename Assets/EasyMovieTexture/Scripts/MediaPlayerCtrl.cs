@@ -792,7 +792,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 
     void OnApplicationPause(bool bPause)
     {
-        Debug.Log("ApplicationPause : " + bPause);
+        //Debug.Log("ApplicationPause : " + bPause);
         if (bPause == true)
         {
             if (m_CurrentState == MEDIAPLAYER_STATE.PAUSED)
@@ -3193,7 +3193,7 @@ void LoadVideoPart2 ()
 
 
 
-		Debug.Log (seek_target);
+		//Debug.Log (seek_target);
 		seek_target= ffmpeg.av_rescale_q(seek_target, ffmpeg.av_get_time_base_q() , pStream->time_base);
 
 		Debug.Log (seek_target);
