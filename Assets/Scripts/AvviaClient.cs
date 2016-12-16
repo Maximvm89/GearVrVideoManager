@@ -38,6 +38,7 @@ public class AvviaClient : MonoBehaviour {
 		myClient.RegisterHandler(MsgType.Connect, OnConnected);
 		myClient.RegisterHandler(MyMsgType.Valore, OnCommand);
 		myClient.Connect("192.168.0.31", 4444); // myClient.Connect("192.168.1.133", 4444);
+		Debug.Log("STO CONNETTENDOMI");
 
 	}
 	
@@ -62,7 +63,7 @@ public class AvviaClient : MonoBehaviour {
 	{
 		myID = netMsg.conn.connectionId;
 		myHost = netMsg.conn.hostId;
-		Debug.Log("Connessione stabilita con " + netMsg.conn.connectionId + " - " + netMsg.conn.hostId);
+		Debug.Log("MI SONO CONNESSO");
 		//txt = status1.GetComponent<Text> (); 
 		//txt.text = "Connessione stabilita con " + netMsg.conn.connectionId + " - " + netMsg.conn.hostId;
 	}
@@ -71,7 +72,7 @@ public class AvviaClient : MonoBehaviour {
 	public void OnCommand(NetworkMessage netMsg)
 	{
 		CommandMessage msg = netMsg.ReadMessage<CommandMessage>();
-		Debug.Log("Ho ricevuto un messaggio sull'identificativo " + myID + " - " + myHost);
+		Debug.Log("HO RICEVUTO UN MESSAGGIO");
 		if (netMsg.conn.hostId == myHost) {
 			//txt = status1.GetComponent<Text> (); 
 			//txt.text = "" + myID + " " + msg.comando;
@@ -96,76 +97,5 @@ public class AvviaClient : MonoBehaviour {
 	{
 		//m_bFinish = true;
 	}
-
-	/*if( GUI.Button(new Rect(50,50,100,100),"Load"))
-	{
-		scrMedia.Load("EasyMovieTexture.mp4");
-		m_bFinish = false;
-	}
-
-	if( GUI.Button(new Rect(50,200,100,100),"Play"))
-	{
-		scrMedia.Play();
-		m_bFinish = false;
-	}
-
-	if( GUI.Button(new Rect(50,350,100,100),"stop"))
-	{
-		scrMedia.Stop();
-	}
-
-	if( GUI.Button(new Rect(50,500,100,100),"pause"))
-	{
-		scrMedia.Pause();
-	}
-
-	if( GUI.Button(new Rect(50,650,100,100),"Unload"))
-	{
-		scrMedia.UnLoad();
-	}
-
-	if( GUI.Button(new Rect(50,800,100,100), " " + m_bFinish))
-	{
-
-	}
-
-	if( GUI.Button(new Rect(200,50,100,100),"SeekTo"))
-	{
-		scrMedia.SeekTo(10000);
-	}
-
-
-	if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING)
-	{
-		if( GUI.Button(new Rect(200,200,100,100),scrMedia.GetSeekPosition().ToString()))
-		{
-			scrMedia.SetSpeed(2.0f);
-		}
-
-		if( GUI.Button(new Rect(200,350,100,100),scrMedia.GetDuration().ToString()))
-		{
-			scrMedia.SetSpeed(1.0f);
-		}
-
-		if( GUI.Button(new Rect(200,450,100,100),scrMedia.GetVideoWidth().ToString()))
-		{
-
-		}
-
-		if( GUI.Button(new Rect(200,550,100,100),scrMedia.GetVideoHeight().ToString()))
-		{
-
-		}
-	}
-
-	if( GUI.Button(new Rect(200,650,100,100),scrMedia.GetCurrentSeekPercent().ToString()))
-	{
-
-	}*/
-
-
-
-
-
-
+		
 }
