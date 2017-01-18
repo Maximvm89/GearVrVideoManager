@@ -37,7 +37,7 @@ public class AvviaClient : MonoBehaviour {
 		myClient = new NetworkClient ();
 		myClient.RegisterHandler(MsgType.Connect, OnConnected);
 		myClient.RegisterHandler(MyMsgType.Valore, OnCommand);
-		myClient.Connect("192.168.0.31", 4444); // myClient.Connect("192.168.1.133", 4444);
+		myClient.Connect("192.168.0.12", 4444); // myClient.Connect("192.168.1.133", 4444);
 		Debug.Log("STO CONNETTENDOMI");
 
 	}
